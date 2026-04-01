@@ -19,13 +19,15 @@ Extractor integrations are now registered through manifests and loaded automatic
 | [Hiring Cafe](/docs/next/extractors/hiring-cafe) | Browser-backed discovery using Hiring Cafe search APIs | Subject to upstream anti-bot checks; uses browser context and encoded search-state payloads | `HIRING_CAFE_SEARCH_TERMS`, `HIRING_CAFE_COUNTRY`, `HIRING_CAFE_MAX_JOBS_PER_TERM`, `HIRING_CAFE_DATE_FETCHED_PAST_N_DAYS` | Uses existing pipeline term/country/budget knobs and maps directly to normalized jobs |
 | [startup.jobs](/docs/next/extractors/startup-jobs) | Startup-focused discovery through the published `startup-jobs-scraper` package | No credentials required; detail enrichment depends on Playwright browser binaries being installed | existing pipeline `searchTerms`, selected country/cities, `jobspyResultsWanted`; `npx playwright install` for fresh environments | Algolia-backed search plus detail-page enrichment via package import; orchestrator maps normalized records and de-duplicates by `jobUrl` |
 | [Working Nomads](/docs/next/extractors/working-nomads) | Remote-only discovery through the public Working Nomads jobs API | Public API is curated and remote-only; available fields are limited to API payload shape | existing pipeline `searchTerms`, selected country/cities, `jobspyResultsWanted`, workplace type | Fetches a single public JSON feed, filters locally by terms/location, infers job type when possible, and de-duplicates by source id / URL |
+| [USAJobs](/docs/next/extractors/usajobs) | US federal government positions | Requires free API key from developer.usajobs.gov | `USAJOBS_API_KEY`, `USAJOBS_USER_AGENT`, `usajobsMaxJobs` | REST API pagination; maps salary, agency, location, and full descriptions |
 | [UKVisaJobs](/docs/next/extractors/ukvisajobs) | UK visa sponsorship-focused roles | Requires authenticated session and periodic token/cookie refresh | `UKVISAJOBS_EMAIL`, `UKVISAJOBS_PASSWORD`, `UKVISAJOBS_MAX_JOBS`, `UKVISAJOBS_SEARCH_KEYWORD` | API pagination + dataset output; orchestrator de-dupes and may fetch missing descriptions |
 | [Manual Import](/docs/next/extractors/manual) | One-off jobs not covered by scrapers | Inference quality depends on model/provider and input quality; some URLs cannot be fetched reliably | App/API endpoints (`/api/manual-jobs/infer`, `/api/manual-jobs/import`) | Accepts text/HTML/URL, runs inference, then saves and scores job after review |
 
 ## Which extractor should I use?
 
 - Use **JobSpy** for broad first-pass sourcing across common boards.
-- Use **Adzuna** when you want API-first discovery in supported non-UK markets.
+- Use **USAJobs** for US federal government positions with H-1B sponsorship potential.
+- Use **Adzuna** when you want API-first discovery in supported markets.
 - Use **Hiring Cafe** when you want another term/country-driven source without adding credentials.
 - Use **startup.jobs** when you want startup-heavy listings without maintaining another scraper locally.
 - Use **Working Nomads** when you want another remote-only source with a public API and curated global roles.
@@ -54,6 +56,7 @@ Many runs combine sources: broad discovery first, then manual import for high-pr
 - [Hiring Cafe](/docs/next/extractors/hiring-cafe)
 - [startup.jobs](/docs/next/extractors/startup-jobs)
 - [Working Nomads](/docs/next/extractors/working-nomads)
+- [USAJobs](/docs/next/extractors/usajobs)
 - [UKVisaJobs](/docs/next/extractors/ukvisajobs)
 - [Manual Import](/docs/next/extractors/manual)
 - [Add an Extractor](/docs/next/workflows/add-an-extractor)

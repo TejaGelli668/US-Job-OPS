@@ -6,6 +6,9 @@ export interface VisaSponsor {
   county: string;
   typeRating: string;
   route: string;
+  approvedPetitions?: number;
+  fiscalYear?: string;
+  naicsCode?: string;
 }
 
 export interface VisaSponsorSearchResult {

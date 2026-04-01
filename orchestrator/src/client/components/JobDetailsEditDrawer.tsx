@@ -287,7 +287,7 @@ export const JobDetailsEditDrawer: React.FC<JobDetailsEditDrawerProps> = ({
                     onChange={(value) =>
                       setDraft((prev) => ({ ...prev, location: value }))
                     }
-                    placeholder="e.g. London, UK"
+                    placeholder="e.g. New York, NY"
                   />
                   <FieldInput
                     id="edit-salary"
@@ -296,7 +296,7 @@ export const JobDetailsEditDrawer: React.FC<JobDetailsEditDrawerProps> = ({
                     onChange={(value) =>
                       setDraft((prev) => ({ ...prev, salary: value }))
                     }
-                    placeholder="e.g. GBP 90k-110k"
+                    placeholder="e.g. $120k-$160k"
                   />
                   <FieldInput
                     id="edit-deadline"

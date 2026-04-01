@@ -95,13 +95,14 @@ Welcome to the JobOps documentation. This site contains guides for setup, config
   - API reference
 
 - **[Visa Sponsors](/docs/next/features/visa-sponsors)**
-  - Search licensed UK sponsor organizations
+  - Search licensed sponsor organizations (US H-1B employers, UK licensed sponsors)
   - Review company routes and sponsor ratings
   - Trigger manual data refresh
 
 ## Extractors
 
 - **[Extractors Overview](/docs/next/extractors/overview)**
+- **[USAJobs](/docs/next/extractors/usajobs)**
 - **[Gradcracker](/docs/next/extractors/gradcracker)**
 - **[UKVisaJobs](/docs/next/extractors/ukvisajobs)**
 - **[JobSpy](/docs/next/extractors/jobspy)**

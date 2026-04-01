@@ -6,6 +6,7 @@ export const EXTRACTOR_SOURCE_IDS = [
   "linkedin",
   "glassdoor",
   "ukvisajobs",
+  "usajobs",
   "adzuna",
   "hiringcafe",
   "startupjobs",
@@ -21,6 +22,7 @@ export interface ExtractorSourceMetadata {
   category: "pipeline" | "manual";
   requiresCredentials?: boolean;
   ukOnly?: boolean;
+  usOnly?: boolean;
 }
 
 export const EXTRACTOR_SOURCE_METADATA: Record<
@@ -42,6 +44,12 @@ export const EXTRACTOR_SOURCE_METADATA: Record<
     category: "pipeline",
     requiresCredentials: true,
     ukOnly: true,
+  },
+  usajobs: {
+    label: "USAJobs",
+    order: 55,
+    category: "pipeline",
+    usOnly: true,
   },
   adzuna: {
     label: "Adzuna",

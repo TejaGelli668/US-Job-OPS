@@ -420,7 +420,7 @@ export const ManualImportFlow: React.FC<ManualImportFlowProps> = ({
                 onChange={(value) =>
                   setDraft((prev) => ({ ...prev, location: value }))
                 }
-                placeholder="e.g. London, UK"
+                placeholder="e.g. New York, NY"
               />
               <FieldInput
                 id="draft-salary"
@@ -429,7 +429,7 @@ export const ManualImportFlow: React.FC<ManualImportFlowProps> = ({
                 onChange={(value) =>
                   setDraft((prev) => ({ ...prev, salary: value }))
                 }
-                placeholder="e.g. GBP 45k-55k"
+                placeholder="e.g. $90k-$120k"
               />
               <FieldInput
                 id="draft-deadline"

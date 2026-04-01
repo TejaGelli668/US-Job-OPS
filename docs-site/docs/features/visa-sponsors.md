@@ -81,7 +81,7 @@ curl -X POST http://localhost:3001/api/visa-sponsors/update/uk
 
 - Run a manual refresh with the header update button (or `POST /api/visa-sponsors/update`).
 - Check `GET /api/visa-sponsors/status` to see per-provider error details.
-- Verify the server can reach the upstream source for that provider (e.g. `gov.uk` for the UK provider).
+- Verify the server can reach the upstream source for that provider (e.g. `gov.uk` for the UK provider, `dol.gov` and `uscis.gov` for the US provider).
 
 ### Company appears once but has multiple routes
 

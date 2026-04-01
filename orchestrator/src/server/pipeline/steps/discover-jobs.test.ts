@@ -18,7 +18,7 @@ vi.mock("@server/extractors/registry", () => ({
 const baseConfig: PipelineConfig = {
   topN: 10,
   minSuitabilityScore: 50,
-  sources: ["indeed", "linkedin", "ukvisajobs"],
+  sources: ["indeed", "linkedin"],
   outputDir: "./tmp",
   enableCrawling: true,
   enableScoring: true,
@@ -65,6 +65,7 @@ describe("discoverJobsStep", () => {
 
     vi.mocked(settingsRepo.getAllSettings).mockResolvedValue({
       searchTerms: JSON.stringify(["engineer"]),
+      jobspyCountryIndeed: "united kingdom",
     } as any);
 
     vi.mocked(registryModule.getExtractorRegistry).mockResolvedValue({
@@ -81,7 +82,12 @@ describe("discoverJobsStep", () => {
       availableSources: ["indeed", "linkedin", "glassdoor", "ukvisajobs"],
     } as any);
 
-    const result = await discoverJobsStep({ mergedConfig: baseConfig });
+    const result = await discoverJobsStep({
+      mergedConfig: {
+        ...baseConfig,
+        sources: ["indeed", "linkedin", "ukvisajobs"],
+      },
+    });
 
     expect(result.discoveredJobs).toHaveLength(1);
     expect(result.sourceErrors).toEqual([
@@ -109,6 +115,7 @@ describe("discoverJobsStep", () => {
 
     vi.mocked(settingsRepo.getAllSettings).mockResolvedValue({
       searchTerms: JSON.stringify(["engineer"]),
+      jobspyCountryIndeed: "united kingdom",
     } as any);
 
     vi.mocked(registryModule.getExtractorRegistry).mockResolvedValue({
@@ -338,6 +345,7 @@ describe("discoverJobsStep", () => {
 
     vi.mocked(settingsRepo.getAllSettings).mockResolvedValue({
       searchTerms: JSON.stringify(["engineer"]),
+      jobspyCountryIndeed: "united kingdom",
     } as any);
     vi.mocked(jobsRepo.getAllJobUrls).mockResolvedValue([
       "https://example.com/existing",

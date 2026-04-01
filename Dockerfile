@@ -57,6 +57,7 @@ COPY extractors/gradcracker/package*.json ./extractors/gradcracker/
 COPY extractors/startupjobs/package*.json ./extractors/startupjobs/
 COPY extractors/workingnomads/package*.json ./extractors/workingnomads/
 COPY extractors/ukvisajobs/package*.json ./extractors/ukvisajobs/
+COPY extractors/usajobs/package*.json ./extractors/usajobs/
 
 # Install Node dependencies with npm cache (dev deps needed for build).
 RUN --mount=type=cache,target=/root/.npm \
@@ -79,6 +80,7 @@ COPY extractors/jobspy ./extractors/jobspy
 COPY extractors/startupjobs ./extractors/startupjobs
 COPY extractors/workingnomads ./extractors/workingnomads
 COPY extractors/ukvisajobs ./extractors/ukvisajobs
+COPY extractors/usajobs ./extractors/usajobs
 
 # ============================================================================
 # PARALLEL BUILD STAGES
@@ -109,6 +111,7 @@ COPY extractors/gradcracker/package*.json ./extractors/gradcracker/
 COPY extractors/startupjobs/package*.json ./extractors/startupjobs/
 COPY extractors/workingnomads/package*.json ./extractors/workingnomads/
 COPY extractors/ukvisajobs/package*.json ./extractors/ukvisajobs/
+COPY extractors/usajobs/package*.json ./extractors/usajobs/
 
 # Install production Node dependencies only.
 RUN --mount=type=cache,target=/root/.npm \
@@ -161,6 +164,7 @@ COPY extractors/jobspy ./extractors/jobspy
 COPY extractors/startupjobs ./extractors/startupjobs
 COPY extractors/workingnomads ./extractors/workingnomads
 COPY extractors/ukvisajobs ./extractors/ukvisajobs
+COPY extractors/usajobs ./extractors/usajobs
 
 # Create data directory.
 RUN mkdir -p /app/data/pdfs

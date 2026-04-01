@@ -41,6 +41,10 @@
     "extractors/ukvisajobs": {
       "entry": ["src/main.ts"],
       "project": ["src/**/*.ts"]
+    },
+    "extractors/usajobs": {
+      "entry": ["src/main.ts"],
+      "project": ["src/**/*.ts"]
     }
   }
 }

@@ -271,14 +271,14 @@ describe("AutomaticRunTab", () => {
         open
         settings={createAppSettings({
           jobspyCountryIndeed: {
-            value: "united kingdom",
-            default: "united kingdom",
-            override: "united kingdom",
+            value: "united states",
+            default: "united states",
+            override: "united states",
           },
           searchCities: {
-            value: "UK",
-            default: "UK",
-            override: "UK",
+            value: "US",
+            default: "US",
+            override: "US",
           },
         })}
         enabledSources={["linkedin"]}

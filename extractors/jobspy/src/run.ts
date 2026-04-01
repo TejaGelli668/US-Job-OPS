@@ -130,9 +130,7 @@ export interface RunJobSpyOptions {
   locations?: string[];
   workplaceTypes?: Array<"remote" | "hybrid" | "onsite">;
   resultsWanted?: number;
-  hoursOld?: number;
   countryIndeed?: string;
-  linkedinFetchDescription?: boolean;
   isRemote?: boolean;
   onProgress?: (event: JobSpyProgressEvent) => void;
 }
@@ -168,10 +166,10 @@ export async function runJobSpy(
     list: options.locations,
     single: options.location,
     env: process.env.JOBSPY_LOCATION,
-    fallback: "UK",
+    fallback: "USA",
   });
   const countryIndeed =
-    options.countryIndeed ?? process.env.JOBSPY_COUNTRY_INDEED ?? "UK";
+    options.countryIndeed ?? process.env.JOBSPY_COUNTRY_INDEED ?? "USA";
   if (searchTerms.length === 0) {
     return { success: true, jobs: [] };
   }
@@ -223,15 +221,7 @@ export async function runJobSpy(
                   process.env.JOBSPY_RESULTS_WANTED ??
                   200,
               ),
-              JOBSPY_HOURS_OLD: String(
-                options.hoursOld ?? process.env.JOBSPY_HOURS_OLD ?? 72,
-              ),
               JOBSPY_COUNTRY_INDEED: countryIndeed,
-              JOBSPY_LINKEDIN_FETCH_DESCRIPTION: String(
-                options.linkedinFetchDescription ??
-                  process.env.JOBSPY_LINKEDIN_FETCH_DESCRIPTION ??
-                  "1",
-              ),
               JOBSPY_IS_REMOTE: String(
                 options.isRemote ??
                   deriveIsRemoteFlag(options.workplaceTypes) ??

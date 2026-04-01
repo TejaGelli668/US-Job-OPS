@@ -71,9 +71,9 @@ describe("extractor health service", () => {
         source: "linkedin",
         selectedSources: ["linkedin"],
         searchTerms: ["software"],
-        selectedCountry: "united kingdom",
+        selectedCountry: "united states",
         settings: expect.objectContaining({
-          jobspyCountryIndeed: "UK",
+          jobspyCountryIndeed: "USA",
           jobspyResultsWanted: "1",
         }),
       }),

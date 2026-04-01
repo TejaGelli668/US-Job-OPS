@@ -253,6 +253,7 @@ export const DEMO_SOURCE_BASE_URLS: Record<JobSource, string> = {
   glassdoor: "https://www.glassdoor.com",
   gradcracker: "https://www.gradcracker.com",
   ukvisajobs: "https://www.ukvisajobs.com",
+  usajobs: "https://www.usajobs.gov",
   adzuna: "https://www.adzuna.com",
   hiringcafe: "https://hiring.cafe",
   startupjobs: "https://startup.jobs",

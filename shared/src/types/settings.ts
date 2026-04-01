@@ -158,6 +158,7 @@ export interface AppSettings {
   resumeProjects: Resolved<ResumeProjectsSettings>;
   pdfRenderer: Resolved<PdfRenderer>;
   ukvisajobsMaxJobs: Resolved<number>;
+  usajobsMaxJobs: Resolved<number>;
   adzunaMaxJobsPerTerm: Resolved<number>;
   gradcrackerMaxJobsPerTerm: Resolved<number>;
   startupjobsMaxJobsPerTerm: Resolved<number>;
@@ -201,6 +202,8 @@ export interface AppSettings {
   rxresumeEmail: string | null;
   rxresumeUrl: string | null;
   ukvisajobsEmail: string | null;
+  usajobsApiKey: string | null;
+  usajobsUserAgent: string | null;
   adzunaAppId: string | null;
   basicAuthUser: string | null;
 

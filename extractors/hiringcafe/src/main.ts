@@ -567,7 +567,7 @@ async function run(): Promise<void> {
     DEFAULT_SEARCH_TERM,
   );
   const country = normalizeCountryKey(
-    process.env.HIRING_CAFE_COUNTRY ?? "united kingdom",
+    process.env.HIRING_CAFE_COUNTRY ?? "united states",
   );
   const maxJobsPerTerm = parsePositiveInt(
     process.env.HIRING_CAFE_MAX_JOBS_PER_TERM,
@@ -628,9 +628,9 @@ async function run(): Promise<void> {
 
     const countryLocation = resolveHiringCafeCountryLocation(country);
     const countryLong =
-      countryLocation?.address_components[0]?.long_name ?? "United Kingdom";
+      countryLocation?.address_components[0]?.long_name ?? "United States";
     const countryShort =
-      countryLocation?.address_components[0]?.short_name ?? "GB";
+      countryLocation?.address_components[0]?.short_name ?? "US";
     const cityLocationContext = locationQuery
       ? await resolveCityLocationContext({
           city: locationQuery,

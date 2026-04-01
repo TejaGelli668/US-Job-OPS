@@ -16,6 +16,20 @@ COUNTRY_ALIASES = {
     "türkiye": "turkey",
     "czech republic": "czechia",
 }
+
+COUNTRY_TO_JOBSPY = {
+    "united kingdom": "uk",
+    "united states": "usa",
+    "czech republic": "czechia",
+    "türkiye": "turkey",
+    "south korea": "south korea",
+    "united arab emirates": "united arab emirates",
+    "saudi arabia": "saudi arabia",
+    "south africa": "south africa",
+    "hong kong": "hong kong",
+    "new zealand": "new zealand",
+    "costa rica": "costa rica",
+}
 GLASSDOOR_COUNTRY_TO_CITY = {
     "australia": "Sydney",
     "austria": "Vienna",
@@ -76,6 +90,12 @@ def _normalize_country_token(value: str) -> str:
     return COUNTRY_ALIASES.get(normalized, normalized)
 
 
+def _to_jobspy_country(value: str) -> str:
+    """Convert a normalized country key to the short form JobSpy expects."""
+    normalized = _normalize_country_token(value)
+    return COUNTRY_TO_JOBSPY.get(normalized, normalized)
+
+
 def _is_country_level_location(location: str, country_indeed: str) -> bool:
     if not location.strip() or not country_indeed.strip():
         return False
@@ -93,18 +113,14 @@ def _scrape_for_sites(
     search_term: str,
     location: str | None,
     results_wanted: int,
-    hours_old: int,
     country_indeed: str,
-    linkedin_fetch_description: bool,
     is_remote: bool,
 ) -> pd.DataFrame:
     kwargs: dict[str, object] = {
         "site_name": sites,
         "search_term": search_term,
         "results_wanted": results_wanted,
-        "hours_old": hours_old,
-        "country_indeed": country_indeed,
-        "linkedin_fetch_description": linkedin_fetch_description,
+        "country_indeed": _to_jobspy_country(country_indeed),
         "is_remote": is_remote,
     }
     if location and location.strip():
@@ -115,11 +131,9 @@ def _scrape_for_sites(
 def main() -> int:
     sites = _parse_sites(_env_str("JOBSPY_SITES", "indeed,linkedin"))
     search_term = _env_str("JOBSPY_SEARCH_TERM", "web developer")
-    location = _env_str("JOBSPY_LOCATION", "UK")
+    location = _env_str("JOBSPY_LOCATION", "USA")
     results_wanted = _env_int("JOBSPY_RESULTS_WANTED", 200)
-    hours_old = _env_int("JOBSPY_HOURS_OLD", 72)
-    country_indeed = _env_str("JOBSPY_COUNTRY_INDEED", "UK")
-    linkedin_fetch_description = _env_bool("JOBSPY_LINKEDIN_FETCH_DESCRIPTION", True)
+    country_indeed = _env_str("JOBSPY_COUNTRY_INDEED", "USA")
     is_remote = _env_bool("JOBSPY_IS_REMOTE", False)
     term_index = _env_int("JOBSPY_TERM_INDEX", 1)
     term_total = _env_int("JOBSPY_TERM_TOTAL", 1)
@@ -151,9 +165,7 @@ def main() -> int:
                 search_term=search_term,
                 location=location,
                 results_wanted=results_wanted,
-                hours_old=hours_old,
                 country_indeed=country_indeed,
-                linkedin_fetch_description=linkedin_fetch_description,
                 is_remote=is_remote,
             )
         )
@@ -179,9 +191,7 @@ def main() -> int:
                 search_term=search_term,
                 location=glassdoor_location,
                 results_wanted=results_wanted,
-                hours_old=hours_old,
                 country_indeed=country_indeed,
-                linkedin_fetch_description=linkedin_fetch_description,
                 is_remote=is_remote,
             )
         )

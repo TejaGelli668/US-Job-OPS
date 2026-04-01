@@ -105,6 +105,9 @@ function getSourceDisabledReason(
   if (EXTRACTOR_SOURCE_METADATA[source]?.ukOnly) {
     return `${sourceLabel[source]} is available only when country is United Kingdom.`;
   }
+  if (EXTRACTOR_SOURCE_METADATA[source]?.usOnly) {
+    return `${sourceLabel[source]} is available only when country is United States.`;
+  }
   return `${sourceLabel[source]} is not available for the selected country.`;
 }
 
@@ -510,7 +513,7 @@ export const AutomaticRunTab: React.FC<AutomaticRunTabProps> = ({
                             shouldDirty: true,
                           })
                         }
-                        placeholder='e.g. "London"'
+                        placeholder='e.g. "New York"'
                         helperText="Optional for all sources, required when Glassdoor is selected."
                         removeLabelPrefix="Remove city"
                       />

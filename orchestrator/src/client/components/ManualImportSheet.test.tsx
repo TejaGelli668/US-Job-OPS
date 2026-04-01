@@ -62,7 +62,7 @@ describe("ManualImportSheet", () => {
     ) as HTMLTextAreaElement;
     expect(jdTextarea.value).toBe(rawDescription.trim());
 
-    fireEvent.change(screen.getByPlaceholderText("e.g. GBP 45k-55k"), {
+    fireEvent.change(screen.getByPlaceholderText("e.g. $90k-$120k"), {
       target: { value: "  120k  " },
     });
 

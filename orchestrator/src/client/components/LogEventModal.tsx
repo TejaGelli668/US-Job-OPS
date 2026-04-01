@@ -218,7 +218,7 @@ export const LogEventModal: React.FC<LogEventModalProps> = ({
           {selectedStage === "offer" && (
             <Field className="animate-in fade-in slide-in-from-top-1 duration-200">
               <FieldLabel>Salary / Details</FieldLabel>
-              <Input {...register("salary")} placeholder="e.g. £50k + bonus" />
+              <Input {...register("salary")} placeholder="e.g. $120k + bonus" />
             </Field>
           )}
 

@@ -268,6 +268,13 @@ export const settingsRegistry = {
     parse: parseIntOrNull,
     serialize: serializeNullableNumber,
   },
+  usajobsMaxJobs: {
+    kind: "typed" as const,
+    schema: z.number().int().min(1).max(1000),
+    default: (): number => 50,
+    parse: parseIntOrNull,
+    serialize: serializeNullableNumber,
+  },
   adzunaMaxJobsPerTerm: {
     kind: "typed" as const,
     schema: z.number().int().min(1).max(1000),
@@ -395,8 +402,8 @@ export const settingsRegistry = {
     schema: z.string().trim().max(100),
     default: (): string =>
       typeof process !== "undefined"
-        ? process.env.JOBSPY_COUNTRY_INDEED || "UK"
-        : "UK",
+        ? process.env.JOBSPY_COUNTRY_INDEED || "USA"
+        : "USA",
     parse: parseNonEmptyStringOrNull,
     serialize: (value: string | null | undefined): string | null =>
       value ?? null,
@@ -614,6 +621,16 @@ export const settingsRegistry = {
   ukvisajobsEmail: {
     kind: "string" as const,
     envKey: "UKVISAJOBS_EMAIL",
+    schema: z.string().trim().max(200),
+  },
+  usajobsApiKey: {
+    kind: "string" as const,
+    envKey: "USAJOBS_API_KEY",
+    schema: z.string().trim().max(200),
+  },
+  usajobsUserAgent: {
+    kind: "string" as const,
+    envKey: "USAJOBS_USER_AGENT",
     schema: z.string().trim().max(200),
   },
   adzunaAppId: {

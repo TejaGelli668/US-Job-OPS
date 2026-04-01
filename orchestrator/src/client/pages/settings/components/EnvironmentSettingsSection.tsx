@@ -63,6 +63,26 @@ export const EnvironmentSettingsSection: React.FC<
           </div>
 
           <div className="space-y-4">
+            <div className="text-sm font-semibold">USAJobs</div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <SettingsInput
+                label="API Key"
+                inputProps={register("usajobsApiKey")}
+                placeholder="your-api-key"
+                disabled={isLoading || isSaving}
+                error={errors.usajobsApiKey?.message as string | undefined}
+              />
+              <SettingsInput
+                label="User Agent (email)"
+                inputProps={register("usajobsUserAgent")}
+                placeholder="you@example.com"
+                disabled={isLoading || isSaving}
+                error={errors.usajobsUserAgent?.message as string | undefined}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4">
             <div className="text-sm font-semibold">Adzuna</div>
             <div className="grid gap-4 md:grid-cols-2">
               <SettingsInput
